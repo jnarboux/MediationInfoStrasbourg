@@ -1,1 +1,5 @@
+Ce répertoire contient du code python pour générer des pdfs qui 
+correspondent à des exercices de codage d'une image par la codage run-length.
+
+Pour installer les dépendances:
 pip install image_slicer
