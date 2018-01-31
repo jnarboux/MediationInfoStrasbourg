@@ -1,10 +1,16 @@
+L'idée serait de faire une activité autour du codage d'images avec des arbres quaternaires.
 
-Du code pour faire un quadtree en 3D, en espérant qu'on puisse l'imprimer:
+Cette activité n'a pas encore été réalisée.
+
+Idée: construire des quadtree en vrai avec des planches et batons. 
+
+J'ai construit du code pour faire un quadtree en 3D, en espérant qu'on puisse l'imprimer en 3D:
 
 http://beetleblocks.com/run/#present:Username=jnarboux&ProjectName=Quadtree%20generator%20with%20YinYang%20example4
 
-Du code pour visualiser un quadtree sur le web:
+Références:
 
+Du code pour visualiser un quadtree sur le web:
 http://blog.ivank.net/quadtree-visualization.html
 
 Du code pour faire des gif animés de quadtrees:
