@@ -8,7 +8,7 @@ secret = secret.convert('1')
 # Split channels
 r, g, b = original.split()
 # Encode the secret in the last bit of the red channel
-out = ImageMath.eval("convert(a&0xFE|b&0x1,'L')", a=r, b=secret)
+out = ImageMath.eval("convert(a&254|b&1,'L')", a=r, b=secret)
 stegano = Image.merge("RGB", (out, g, b))
 
 stegano.show()
