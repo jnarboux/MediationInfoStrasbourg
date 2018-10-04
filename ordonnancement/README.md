@@ -24,13 +24,14 @@ Pour tous es défis :
 
 ### Défi n°1 : le boulanger
 
-|    Plat   | P | C |
-|:---------:|:-:|:-:|
-|    Pain   | 1 | 2 |
-| Croissant | 2 | 5 |
-|  Brioche  | 3 | 4 |
+|    Plat   | P | C | Ordre |
+|:---------:|:-:|:-:|:-----:|
+|    Pain   | 1 | 2 |   1   |
+| Croissant | 2 | 5 |   2   |
+|  Brioche  | 3 | 4 |   3   |
 
-- Total P+C = 17
+- Total P+C              : 17
+- Solution de taille max : 14
 
 ### Défi n°2 : l'alsacien
 
@@ -40,17 +41,18 @@ Pour tous es défis :
 |    Bretzel    | 5 | 3 |
 |   Jambonneau  | 4 | 4 |
 
-- Total P+C = 19
+- Total P+C              : 19
+- Solution de taille max : 15
 
 ### Défi n°3 : le traiteur
 
-|   Plat  | P | C |
-|:-------:|:-:|:-:|
-| Poisson | 3 | 1 |
-|  Poulet | 6 | 2 |
-|  Gâteau | 4 | 5 |
+|   Plat  | P | C | Ordre |
+|:-------:|:-:|:-:|:-----:|
+| Poisson | 3 | 1 |   3   |
+|  Poulet | 6 | 2 |   2   |
+|  Gâteau | 4 | 5 |   1   |
 
-- Total P+C = 21
+- Total P+C              : 21
 - Solution de taille max : 18
 
 Dimension des impressions
