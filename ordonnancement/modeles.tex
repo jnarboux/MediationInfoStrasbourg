@@ -1,0 +1,92 @@
+\documentclass[dvipsnames]{article}
+
+\usepackage[a4paper, margin=.5cm]{geometry}
+
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Côté d'un carré unité
+\def\base{2cm}
+%%%%%%%%%%%%%%%%%%%%%%%
+
+% Hauteur d'un rectangle
+\def\height{-\base}
+% Espace horizontal entre deux rectangles
+\def\paddingX{.5*\base}
+% Espace vertical entre deux rectangles
+\def\paddingY{-.3*\base}
+% Hauteur d'une icône
+\def\iconHeight{.9\base}
+% Longeur d'un rectangle
+\newcommand{\length}[1]{ #1*\base }
+% Coordonnée de départ d'un rectangle selon Y
+\newcommand{\startY}[1]{ #1*\height+#1*\paddingY }
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Tracé d'un couple de rectcangles
+% param1 : longeur du rectangel 1 (en nombre d'unité)
+% param2 : longeur du rectangle 2 (en nombre d'unité)
+% param3 : couleur
+% param4 : ordre vertical
+%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Duo}[5]{%
+  % 1er rectangle de la paire
+  \fill[#3] (0,                                 \startY{#4})%
+            rectangle%
+            (\length{#1},                       \startY{#4}+\height);%
+  % Icône du 1er rectangle de la paire
+  % \node (icona#4) at%
+  %   (.5*\length{#1},%
+  %    \startY{#4}+.5*\height)%
+  % {\includegraphics[height=\iconHeight]{#5}};%
+  \node (toque#4) at%
+    (.5*\length{#1},%
+     \startY{#4}+.5*\height)%
+  {\includegraphics[height=\iconHeight]{icons/toque.png}};%
+
+  % 2ème rectangle de la paire
+  \fill[#3] (\length{#1}+\paddingX,             \startY{#4})%
+            rectangle%
+            (\length{#1}+\paddingX+\length{#2}, \startY{#4}+\height);%
+  % Icône du 2ème rectangle de la paire
+  % \node (iconnb#4) at%
+  %   (\length{#1}+\paddingX+.5*\length{#2},%
+  %    \startY{#4}+.5*\height)%
+  % {\includegraphics[height=\iconHeight]{#5}};%
+  \node (iconnb#4) at%
+    (\length{#1}+\paddingX+.5*\length{#2},%
+     \startY{#4}+.5*\height)%
+  {\includegraphics[height=\iconHeight]{icons/four.png}};%
+}
+
+\newcommand{\Pain}[1]{\Duo{1}{2}{Cerulean!70}{#1}{icons/pain.png}}
+\newcommand{\Croissant}[1]{\Duo{2}{5}{SeaGreen!70}{#1}{icons/croissant.png}}
+\newcommand{\Brioche}[1]{\Duo{3}{4}{Fuchsia!70}{#1}{icons/brioche.png}}
+
+\newcommand{\TarteFlambee}[1]{\Duo{2}{1}{cyan!70}{#1}{icons/tarteflambee.png}}
+\newcommand{\Bretzel}[1]{\Duo{5}{3}{VioletRed!70}{#1}{icons/bretzel.png}}
+\newcommand{\Jambonneau}[1]{\Duo{4}{4}{Apricot!70}{#1}{icons/jambonneau.png}}
+
+\newcommand{\Poisson}[1]{\Duo{3}{1}{Magenta!70}{#1}{icons/poisson.png}}
+\newcommand{\Poulet}[1]{\Duo{6}{2}{LimeGreen!70}{#1}{icons/poulet.png}}
+\newcommand{\Gateau}[1]{\Duo{4}{5}{RawSienna!70}{#1}{icons/gateau.png}}
+
+\begin{tikzpicture}
+  \Pain{0}
+  \Croissant{1}
+  \Brioche{2}
+
+  \TarteFlambee{3}
+  \Bretzel{4}
+  \Jambonneau{5}
+
+  \Poisson{6}
+  \Poulet{7}
+  \Gateau{8}
+\end{tikzpicture}
+
+\end{document}
