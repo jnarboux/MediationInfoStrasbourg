@@ -59,5 +59,5 @@ Dimension des impressions
 -------------------------
 
 - règle     :  9mm de hauteur x 40 cm de long (échelle en x10min)
-- logos     : 20mm x 20mm
-- baguettes : 24mm x 24mm
+- logos     : 16mm x 16mm
+- baguettes : 18mm largeur
