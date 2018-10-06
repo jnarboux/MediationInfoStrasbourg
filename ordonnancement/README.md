@@ -32,6 +32,7 @@ Pour tous es défis :
 
 - Total P+C              : 17
 - Solution de taille max : 14
+- Optimal                : 12
 
 ### Défi n°2 : l'alsacien
 
@@ -43,6 +44,7 @@ Pour tous es défis :
 
 - Total P+C              : 19
 - Solution de taille max : 15
+- Optimal                : 13
 
 ### Défi n°3 : le traiteur
 
@@ -54,6 +56,7 @@ Pour tous es défis :
 
 - Total P+C              : 21
 - Solution de taille max : 18
+- Optimal                : 14
 
 Dimension des impressions
 -------------------------
