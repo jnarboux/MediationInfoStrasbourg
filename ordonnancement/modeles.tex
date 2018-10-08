@@ -78,17 +78,26 @@
 \end{tikzpicture}%
 }
 
-\newcommand{\Pain}[1]{\Duo{1}{2}{Cerulean!70}{#1}{icons/pain.png}}
-\newcommand{\Croissant}[1]{\Duo{2}{5}{SeaGreen!70}{#1}{icons/croissant.png}}
-\newcommand{\Brioche}[1]{\Duo{3}{4}{Fuchsia!70}{#1}{icons/brioche.png}}
+\definecolor{ColorPain}{HTML}{80D3E4}
+\definecolor{ColorCroissant}{HTML}{ABE480}
+\definecolor{ColorBrioche}{HTML}{B180E4}
+\newcommand{\Pain}[1]{\Duo{1}{2}{ColorPain}{#1}{icons/pain.png}}
+\newcommand{\Croissant}[1]{\Duo{2}{5}{ColorCroissant}{#1}{icons/croissant.png}}
+\newcommand{\Brioche}[1]{\Duo{3}{4}{ColorBrioche}{#1}{icons/brioche.png}}
 
-\newcommand{\TarteFlambee}[1]{\Duo{2}{1}{cyan!70}{#1}{icons/tarteflambee.png}}
-\newcommand{\Bretzel}[1]{\Duo{5}{3}{VioletRed!70}{#1}{icons/bretzel.png}}
-\newcommand{\Jambonneau}[1]{\Duo{4}{4}{Apricot!70}{#1}{icons/jambonneau.png}}
+\definecolor{ColorTarteFlambee}{HTML}{80D3E4}
+\definecolor{ColorBretzel}{HTML}{E4808C}
+\definecolor{ColorJambonneau}{HTML}{E4C580}
+\newcommand{\TarteFlambee}[1]{\Duo{2}{1}{ColorTarteFlambee}{#1}{icons/tarteflambee.png}}
+\newcommand{\Bretzel}[1]{\Duo{5}{3}{ColorBretzel}{#1}{icons/bretzel.png}}
+\newcommand{\Jambonneau}[1]{\Duo{4}{4}{ColorJambonneau}{#1}{icons/jambonneau.png}}
 
-\newcommand{\Poisson}[1]{\Duo{3}{1}{Magenta!70}{#1}{icons/poisson.png}}
-\newcommand{\Poulet}[1]{\Duo{6}{2}{LimeGreen!70}{#1}{icons/poulet.png}}
-\newcommand{\Gateau}[1]{\Duo{4}{5}{RawSienna!70}{#1}{icons/gateau.png}}
+\definecolor{ColorPoisson}{HTML}{FF69DB}
+\definecolor{ColorPoulet}{HTML}{BCD500}
+\definecolor{ColorGateau}{HTML}{B67026}
+\newcommand{\Poisson}[1]{\Duo{3}{1}{ColorPoisson}{#1}{icons/poisson.png}}
+\newcommand{\Poulet}[1]{\Duo{6}{2}{ColorPoulet}{#1}{icons/poulet.png}}
+\newcommand{\Gateau}[1]{\Duo{4}{5}{ColorGateau}{#1}{icons/gateau.png}}
 
 \begin{tikzpicture}
   \Pain{0}
