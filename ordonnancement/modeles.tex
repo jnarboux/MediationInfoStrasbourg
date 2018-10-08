@@ -9,18 +9,24 @@
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%
-% Côté d'un carré unité
-\def\base{2cm}
+% Longueur unité
+\newlength{\base}
+\setlength{\base}{2cm}
+% Largeur baguette
+\newlength{\largb}
+\setlength{\largb}{18mm}
+%\def\base{2cm}
 %%%%%%%%%%%%%%%%%%%%%%%
 
 % Hauteur d'un rectangle
-\def\height{-\base}
+\def\height{-\largb}
 % Espace horizontal entre deux rectangles
 \def\paddingX{.5*\base}
 % Espace vertical entre deux rectangles
-\def\paddingY{-.3*\base}
+\def\paddingY{-.3*\largb}
 % Hauteur d'une icône
-\def\iconHeight{.9\base}
+\def\iconHeight{.6\largb}
+\def\smallIconHeight{.2\largb}
 % Longeur d'un rectangle
 \newcommand{\length}[1]{ #1*\base }
 % Coordonnée de départ d'un rectangle selon Y
@@ -38,29 +44,29 @@
   \fill[#3] (0,                                 \startY{#4})%
             rectangle%
             (\length{#1},                       \startY{#4}+\height);%
-  % Icône du 1er rectangle de la paire
-  % \node (icona#4) at%
-  %   (.5*\length{#1},%
-  %    \startY{#4}+.5*\height)%
-  % {\includegraphics[height=\iconHeight]{#5}};%
-  \node (toque#4) at%
+  Icône du 1er rectangle de la paire
+  \node (icona#4) at%
     (.5*\length{#1},%
      \startY{#4}+.5*\height)%
-  {\includegraphics[height=\iconHeight]{icons/toque.png}};%
+  {\includegraphics[height=\iconHeight]{#5}};%
+  \node (toque#4) at%
+    (0.3*\paddingX,%
+     \startY{#4}+.15*\height)%
+  {\includegraphics[height=\smallIconHeight]{icons/toque.png}};%
 
   % 2ème rectangle de la paire
   \fill[#3] (\length{#1}+\paddingX,             \startY{#4})%
             rectangle%
             (\length{#1}+\paddingX+\length{#2}, \startY{#4}+\height);%
   % Icône du 2ème rectangle de la paire
-  % \node (iconnb#4) at%
-  %   (\length{#1}+\paddingX+.5*\length{#2},%
-  %    \startY{#4}+.5*\height)%
-  % {\includegraphics[height=\iconHeight]{#5}};%
+   \node (iconnb#4) at%
+     (\length{#1}+\paddingX+.3*\paddingX,%
+     \startY{#4}+.15*\height)%
+   {\includegraphics[height=\smallIconHeight]{icons/four.png}};%
   \node (iconnb#4) at%
     (\length{#1}+\paddingX+.5*\length{#2},%
      \startY{#4}+.5*\height)%
-  {\includegraphics[height=\iconHeight]{icons/four.png}};%
+  {\includegraphics[height=\iconHeight]{#5}};%
 }
 
 \newcommand{\Pain}[1]{\Duo{1}{2}{Cerulean!70}{#1}{icons/pain.png}}
