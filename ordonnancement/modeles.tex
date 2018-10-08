@@ -9,28 +9,24 @@
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%
-% Longueur unité
-\newlength{\base}
-\setlength{\base}{2cm}
 % Largeur baguette
-\newlength{\largb}
-\setlength{\largb}{18mm}
-%\def\base{2cm}
+\newlength{\base}
+\setlength{\base}{18mm}
 %%%%%%%%%%%%%%%%%%%%%%%
 
 % Hauteur d'un rectangle
-\def\height{-\largb}
+\def\height{-\base}
 % Espace horizontal entre deux rectangles
-\def\paddingX{.5*\base}
+\def\marginX{.5*\base}
 % Espace vertical entre deux rectangles
-\def\paddingY{-.3*\largb}
+\def\marginY{-.3*\base}
 % Hauteur d'une icône
-\def\iconHeight{.6\largb}
-\def\smallIconHeight{.2\largb}
+\def\iconHeight{.5\base}
+\def\smallIconHeight{.2\base}
 % Longeur d'un rectangle
 \newcommand{\length}[1]{ #1*\base }
 % Coordonnée de départ d'un rectangle selon Y
-\newcommand{\startY}[1]{ #1*\height+#1*\paddingY }
+\newcommand{\startY}[1]{ #1*\height+#1*\marginY }
 
 %%%%%%%%%%%%%%%%%%%%%%%
 % Tracé d'un couple de rectcangles
@@ -47,12 +43,12 @@
             rectangle%
             (\length{#1},                       \startY{#5}+\height)%
             % Taille de la tâche
-            node[color=black,anchor=north,shift={(-.8em,1.6em)}]%
-                {\large \textbf{#1}};%
+            node[color=black,anchor=south,shift={(-1em,0)}]%
+                {\textbf{#10'}};%
   % Icône de la toque
   \node (toque#5) at%
-    (0.3*\paddingX,%
-     \startY{#5}+.15*\height)%
+    (.85*\smallIconHeight,%
+     \startY{#5}-.85*\smallIconHeight)%
      {\includegraphics[height=\smallIconHeight]{icons/toque.png}};%
   % Icône du plat
   \node (icona#5) at%
@@ -63,20 +59,20 @@
 
   %------------------------------------------------------------------
   % 2ème rectangle de la paire
-  \fill[#3] (\length{#1}+\paddingX,             \startY{#5})%
+  \fill[#3] (\length{#1}+\marginX,             \startY{#5})%
             rectangle%
-            (\length{#1}+\paddingX+\length{#2}, \startY{#5}+\height)%
+            (\length{#1}+\marginX+\length{#2}, \startY{#5}+\height)%
             % Taille de la tâche
-            node[color=black,anchor=north,shift={(-.8em,1.6em)}]%
-                {\large \textbf{#2}};%
+            node[color=black,anchor=south,shift={(-1em,0)}]%
+                {\textbf{#20'}};%
   % Icône du four
-   \node (iconnb#5) at%
-     (\length{#1}+\paddingX+.3*\paddingX,%
-      \startY{#5}+.15*\height)%
+   \node (four#5) at%
+     (\length{#1}+\marginX+.85*\smallIconHeight,%
+      \startY{#5}-.85*\smallIconHeight)%
       {\includegraphics[height=\smallIconHeight]{icons/four.png}};%
   % Icône du plat
-  \node (four#5) at%
-    (\length{#1}+\paddingX+.5*\length{#2},%
+  \node (iconnb#5) at%
+    (\length{#1}+\marginX+.5*\length{#2},%
      \startY{#5}+.5*\height)%
      {\includegraphics[height=\iconHeight]{#4}};%
   %------------------------------------------------------------------
@@ -84,9 +80,9 @@
 
 \newcommand{\Legende}[1]{%
 \begin{tikzpicture}%
-\fill [lightgray] (0,0) rectangle (\largb,\largb);%
+\fill [lightgray] (0,0) rectangle (\base,\base);%
 \node (iconf) at%
-     (0.5\largb,0.5\largb)%
+     (0.5\base,0.5\base)%
    {\includegraphics[height=\iconHeight]{#1}};%
 \end{tikzpicture}%
 }

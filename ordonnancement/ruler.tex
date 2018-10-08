@@ -6,7 +6,7 @@
 
 \begin{document}
 
-\begin{tikzpicture}[scale = 1]
+\begin{tikzpicture}
   \def\base{2cm}
   \def\framethickness{.01cm}
   \def\rulethickness{.1cm}
@@ -15,16 +15,16 @@
   \def\ruleticksnb{19}
 
   \draw[line width=\framethickness]
-      (-2,0) rectangle (\ruleticksnb*\base+\base,\ruleheight);
-   \fill[lightgray]
-      (-2,0) rectangle (\ruleticksnb*\base+\base,\ruleheight);
+      (0,0) rectangle (\ruleticksnb*\base+\base,\ruleheight);
+   \fill[lightgray!40]
+      (0,0) rectangle (\ruleticksnb*\base+\base,\ruleheight);
 
 
-  \foreach \i in {0,...,\ruleticksnb}
+  \foreach \i in {1,...,\ruleticksnb}
   {
     \draw[color=black,line width=\rulethickness]%
         (\i*\base,\ruleheight-\ruleticsheight) -- (\i*\base,\ruleheight)%
-        node[anchor=north,yshift=-\ruleticsheight] {\Large \textbf{\i}};
+        node[anchor=north,yshift=-\ruleticsheight] {\textbf{\i0'}};
   }
 
   \draw[line width=\rulethickness]
