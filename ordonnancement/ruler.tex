@@ -10,14 +10,17 @@
   \def\base{2cm}
   \def\framethickness{.01cm}
   \def\rulethickness{.1cm}
-  \def\ruleheight{.9cm}
+  \def\ruleheight{.8cm}
   \def\ruleticsheight{.3cm}
   \def\ruleticksnb{19}
 
   \draw[line width=\framethickness]
-      (0,0) rectangle (\ruleticksnb*\base+\base,\ruleheight);
+      (-2,0) rectangle (\ruleticksnb*\base+\base,\ruleheight);
+   \fill[lightgray]
+      (-2,0) rectangle (\ruleticksnb*\base+\base,\ruleheight);
 
-  \foreach \i in {1,...,\ruleticksnb}
+
+  \foreach \i in {0,...,\ruleticksnb}
   {
     \draw[color=black,line width=\rulethickness]%
         (\i*\base,\ruleheight-\ruleticsheight) -- (\i*\base,\ruleheight)%
