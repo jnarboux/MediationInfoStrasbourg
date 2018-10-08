@@ -69,6 +69,15 @@
   {\includegraphics[height=\iconHeight]{#5}};%
 }
 
+\newcommand{\Legende}[1]{%
+\begin{tikzpicture}%
+\fill [lightgray] (0,0) rectangle (\largb,\largb);%
+\node (iconf) at%
+     (0.5\largb,0.5\largb)%
+   {\includegraphics[height=\iconHeight]{#1}};%
+\end{tikzpicture}%
+}
+
 \newcommand{\Pain}[1]{\Duo{1}{2}{Cerulean!70}{#1}{icons/pain.png}}
 \newcommand{\Croissant}[1]{\Duo{2}{5}{SeaGreen!70}{#1}{icons/croissant.png}}
 \newcommand{\Brioche}[1]{\Duo{3}{4}{Fuchsia!70}{#1}{icons/brioche.png}}
@@ -94,5 +103,11 @@
   \Poulet{7}
   \Gateau{8}
 \end{tikzpicture}
+
+\smallskip
+
+\Legende{icons/four.png}
+\Legende{icons/toque.png}
+
 
 \end{document}
