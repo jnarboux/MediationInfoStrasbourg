@@ -1,0 +1,61 @@
+\documentclass[landscape]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+
+\usepackage{tikz}
+
+\title{Le jeu du cuisinier}
+\date{}
+
+\setbeamertemplate{navigation symbols}{} 
+%\usetheme{Dresden}
+\usetheme{Madrid}
+%\usecolortheme{seahorse}
+\usecolortheme{rose}
+
+\begin{document}
+
+%\maketitle
+
+%\setbeamertemplate{footline}[page number]
+
+\begin{frame}{Le jeu du cuisinier}
+
+\begin{block}{Le but du jeu}
+
+\begin{itemize}
+\item Un cuisinier se retrouve avec un ensemble de plats à préparer qui nécessitent chacun un certain temps de préparation \includegraphics[width=0.5cm]{icons/toque.png} et un certain temps de cuisson \includegraphics[width=0.5cm]{icons/four.png}. 
+
+\item
+Le cuisinier ne peut préparer qu'\textbf{un plat à la fois}, de même que le four ne peut accueillir qu'un plat à la fois.
+
+\item
+L'objectif est de trouver l'ordre de préparation et de cuisson qui permet de terminer l'ensemble des plats le plus rapidement possible.
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}{Une solution}
+
+%Principe : on détermine un ordre sur les plats, chacun ayant deux tâches, préparation et cuisson.
+
+
+\begin{block}{Algorithme de Johnson:}
+
+\begin{enumerate}
+\item Sélectionner la tâche la plus courte.
+\item Si c'est un temps de préparation, placer ce plat au début du planning. Sinon, c'est un temps de cuisson, placer ce plat en fin de planning.
+\item Continuer avec le reste des plats de la même manière en remplissant le planning par le centre.
+\end{enumerate}
+
+\end{block}
+
+
+\end{frame}
+
+
+\end{document}
