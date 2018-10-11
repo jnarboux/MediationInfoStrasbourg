@@ -1,0 +1,32 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{fullpage}
+\usepackage{graphicx}
+
+\newlength{\tilesize}
+\setlength{\tilesize}{0.08\textwidth}
+
+\begin{document}
+\thispagestyle{empty}
+\begin{tabular}{cc}
+\begin{tikzpicture}
+\draw (0,0) grid[step=0.5] (7.5,7.5);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (0,0) grid[step=0.5] (7.5,7.5);
+\end{tikzpicture}
+\\
+\strut\\
+\begin{tikzpicture}
+\draw (0,0) grid[step=0.5] (7.5,7.5);
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\draw (0,0) grid[step=0.5] (7.5,7.5);
+\end{tikzpicture}
+\\
+\end{tabular}
+
+\end{document}
