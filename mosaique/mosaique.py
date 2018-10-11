@@ -72,21 +72,36 @@ def create_tiles(basename,tile_size):
 
 def latex_code(image_filename,i,j,rlecode,tile_size):
     source_template=r"""
-Tuile Ligne: xxx Colonne: yyy.
+\parbox{\textwidth}{
+Ecrire au dos du quadrillage: Ligne: xxx, Colonne: yyy.\\
+\smallskip
 
-Code:
+\begin{tabular}{cl}
+\begin{tikzpicture}
+\draw (0,0) grid[step=0.5] (7.5,7.5);
+\end{tikzpicture}
+\begin{minipage}[b]{.46\linewidth}
+\baselineskip=0.5cm
 zzz
+\end{minipage}
+\end{tabular}
+}
+\vfill
 
-\newpage
+%\newpage
 
-\fbox{\includegraphics[width=\textwidth]{nomimage}}
+%\fbox{\includegraphics[width=\textwidth]{nomimage}}
 
-\newpage
+%\newpage
     """
     s1=source_template.replace("xxx", str(i)).replace("yyy", str(j))
     s2=s1.replace("zzz", str(rlecode)).replace("nomimage", name_of_tile(image_filename,i,j)+".png" )
     return(s2)
-    
+
+
+def presentation_of_code(ll):
+    return("\\\\".join(map (lambda l:",".join(map(str,l)),ll)))
+
 def create_exercises(basename,tile_size):
     imgorig = Image.open(basename+".png")
     width, height = imgorig.size
@@ -109,7 +124,7 @@ def create_exercises(basename,tile_size):
         for j in range(1,nby+1):
             print("Tile",i,j)
             code=rle_encode_tile(basename,i,j,tile_size)
-            print (latex_code(basename,i,j,str(code),tile_size),file=f)
+            print (latex_code(basename,i,j,presentation_of_code(code),tile_size),file=f)
     print(footer,file=f)
     f.close()
 
