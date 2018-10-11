@@ -1,10 +1,10 @@
 from PIL import Image
+from math import *
 import image_slicer
 import itertools
+from itertools import zip_longest
 import numpy
 
-filename='trois-brigands'
-tile_size = 10
 
 def ilen(it):
     '''Return the length of an iterable.
@@ -13,6 +13,18 @@ def ilen(it):
     7
     '''
     return sum(1 for _ in it)
+
+def grouper(iterable, n, padvalue=None):
+    "grouper(3, 'abcdefg', 'x') --> ('a','b','c'), ('d','e','f'), ('g','x','x')"
+    return zip_longest(*[iter(iterable)]*n, fillvalue=padvalue)
+
+#def grouper(l,groupsize):
+#    print(len(l))
+#    print(list(range(0, len(l), groupsize)))
+#    print(l[n] for n in range(0, len(l), groupsize))
+#    print("toto")
+#    r= [l[n:(n+groupsize)] for n in list(range(0, len(l), groupsize))]
+#    return(r)
 
 def runlength_enc(xs):
     '''Return a run-length encoded version of the stream, xs.
@@ -27,59 +39,116 @@ def runlength_enc(xs):
     '''
     return ((ilen(gp), x) for x, gp in itertools.groupby(xs))
 
-def name_of_tile(filename,i,j):
-    return(filename+'_'+str(i).zfill(2)+'_'+str(j).zfill(2)+'.png')
+def name_of_tile(basename,i,j):
+    return("{file}_{x:02d}_{y:02d}".format(file=basename,x=i,y=j))
 
-def rle_encode_tile(filename, i, j):
-    img = Image.open(name_of_tile(filename,i,j))
-    greyscaleimg=img.convert('L')
-    bwimg=Image.eval(greyscaleimg, lambda px: 0 if px <= 100 else 255)
-    img_dta = list(bwimg.getdata())
-    return(map(lambda (x,y):x,list(runlength_enc(img_dta))))
 
-def create_tiles():
-    '''Create tiles'''
-    imgorig = Image.open(filename+".jpg")
-    width, height = imgorig.size
-    image_slicer.slice(filename+".jpg", (width/tile_size)*(height/tile_size))
+def rle_encode_list_list(l):
+    return(list(map(runlength_enc, l)))
 
-def latex_code(image_filename,i,j,rlecode):
-    source_template=r"""\documentclass{article}
-\usepackage[utf8]{inputenc}
-\usepackage{tikz}
+def add_implicit_color(l):
+    for x in l:
+        if(x[0][1]==0):
+            x.insert(0,(0,1))
 
-\begin{document}
+def rle_encode_tile(basename, i, j, tile_size):
+    img = Image.open(name_of_tile(basename,i,j)+".png")
+    img_dta = grouper(img.getdata(),tile_size)
+    codes = list(map(list,rle_encode_list_list(img_dta)))
+    print (codes[0][0][1])
+    add_implicit_color(codes)
+    codes=list(map(list,map(lambda l: map(lambda x: x[0], l),codes)))
+    return(codes)
 
-Mosaique xxx yyy.
+def create_tiles(basename,tile_size):
+    imgorig = Image.open(basename+".png")
+    imgorig.convert("1")
+    imgwidth, imgheight = imgorig.size
+    for i in range(imgheight//tile_size):
+        for j in range(imgwidth//tile_size):
+            box = (j*tile_size, i*tile_size, (j+1)*tile_size, (i+1)*tile_size)
+            imgorig.crop(box).save(name_of_tile(basename,i+1,j+1)+".png")
+#            imgorig.crop(box).save(name_of_tile(basename,i+1,j+1)+".pdf")
 
-\begin{tikzpicture}
-\draw[step=0.5cm,black,thin] (0,0) grid (taille,taille);
-\end{tikzpicture}
+def latex_code(image_filename,i,j,rlecode,tile_size):
+    source_template=r"""
+Tuile Ligne: xxx Colonne: yyy.
 
 Code:
 zzz
 
 \newpage
 
-\includegraphics{nomimage}
+\fbox{\includegraphics[width=\textwidth]{nomimage}}
+
+\newpage
+    """
+    s1=source_template.replace("xxx", str(i)).replace("yyy", str(j))
+    s2=s1.replace("zzz", str(rlecode)).replace("nomimage", name_of_tile(image_filename,i,j)+".png" )
+    return(s2)
+    
+def create_exercises(basename,tile_size):
+    imgorig = Image.open(basename+".png")
+    width, height = imgorig.size
+    nbx = height//tile_size
+    print("nbx",nbx)
+    nby = width//tile_size
+    print("nby",nby)
+    header=r"""\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{graphicx}
+
+\begin{document}"""
+    footer=r"""
 \end{document}
     """
-    s1=source_template.replace("taille", str(tile_size))
-    s2=s1.replace("xxx", str(i))
-    s3=s2.replace("yyy", str(j))
-    s4=s3.replace("zzz", rlecode)
-    s5=s4.replace("nomimage", name_of_tile(filename,i,j) )
-    return(s5)
-    
-def create_exercises():
-    for i in range(1,33):
-        for j in range(1,33):
-            code=rle_encode_tile(filename,i,j)
-            f = open(name_of_tile(filename,i,j)+'.tex', 'w')
-            print >>f, (latex_code(filename,i,j,str(code)))
-            f.close()
+    f = open(basename+'_codes.tex', 'w')
+    print(header,file=f)
+    for i in range(1,nbx+1):
+        for j in range(1,nby+1):
+            print("Tile",i,j)
+            code=rle_encode_tile(basename,i,j,tile_size)
+            print (latex_code(basename,i,j,str(code),tile_size),file=f)
+    print(footer,file=f)
+    f.close()
 
-create_tiles()
-create_exercises()
-        
-        
+def create_solutions(basename,tile_size):
+    imgorig = Image.open(basename+".png")
+    width, height = imgorig.size
+    nbx = height//tile_size
+    print("nbx",nbx)
+    nby = width//tile_size
+    print("nby",nby)
+    tile_inv= 0.97 / nby
+    s=""
+    for i in range(1,nbx+1):
+        for j in range(1,nby+1):
+            s+=r"""\includegraphics[width=\tilesize]{file.png}
+""".replace("file",name_of_tile(basename,i,j))
+        s+="\\\\\n"
+    header=r"""\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{graphicx}
+
+\newlength{\tilesize}
+\setlength{\tilesize}{xxx\textwidth}
+
+\begin{document}
+\noindent
+"""
+    footer=r"""\end{document}"""
+    f = open(basename+'_solutions.tex', 'w')
+    print (header.replace("xxx",str(tile_inv))+s+footer,file=f)
+    f.close()
+    
+def create_all(basename,tile_size):
+    print("Creating the tiles")
+    create_tiles(basename,tile_size)
+    print("Creating the codes")
+    create_exercises(basename,tile_size)
+    print("Creating solution")
+    create_solutions(basename,tile_size)
+
+create_all("ours",15)
