@@ -120,16 +120,17 @@ def create_solutions(basename,tile_size):
     print("nbx",nbx)
     nby = width//tile_size
     print("nby",nby)
-    tile_inv= 0.97 / nby
+    tile_inv= 0.8 / nby
     s=""
     for i in range(1,nbx+1):
         for j in range(1,nby+1):
-            s+=r"""\includegraphics[width=\tilesize]{file.png}
+            s+=r"""\fbox{\includegraphics[width=\tilesize]{file.png}}
 """.replace("file",name_of_tile(basename,i,j))
         s+="\\\\\n"
     header=r"""\documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage{tikz}
+\usepackage{fullpage}
 \usepackage{graphicx}
 
 \newlength{\tilesize}
