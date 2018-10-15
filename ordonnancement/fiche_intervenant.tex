@@ -1,0 +1,61 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[french]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{wrapfig}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue, breaklinks=true]{hyperref}
+
+\newcommand{\guill}[1]{\og{}#1\fg{}}
+
+\title{Le planning du cuisinier}
+\author{Adrien Krähenbühl \and Basile Sauvage \and Julien Narboux}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Description d'une activité d'informatique débranchée sur le thème de l'ordonnancement.
+Cette activité a été préparée pour la Fête de la Science 2018 à Strasbourg.
+\end{abstract}
+
+
+\section{Contexte}
+
+Un cuisinier se retrouve avec un ensemble de plats à préparer qui nécessitent chacun un certain temps de préparation et un certain temps de cuisson. Le cuisinier ne peut préparer qu'un plat à la fois, de même que le four ne peut accueillir qu'un plat à la fois.
+
+L'objectif est de trouver l'ordre de préparation et de cuisson qui permet de terminer l'ensemble des plats le plus rapidement possible.
+
+\section{Matériel}
+
+La matériel consiste en un diagramme de Gantt manipulable. Il peut être construit en bois pour une utilisation intensive ou simplement en papier pour une activité en classe.
+
+Les temps de cuisson et de préparation des plats sont matérialisés par des rectangles de longueur proportionelle.
+
+
+
+
+\section{Défis}
+
+Nous proposons quatre défis qui sont conçus de la manière suivante:
+\begin{enumerate}
+\item Un premier défi (croissant, brioche, pain) dont la solution optimale consiste à trier les plats par ordre de temps de préparation croissante.
+\item Un deuxième défi (tarte flambée, jambonneau, bretzel) qui montre que trier par temps de préparation croissant n'est pas toujours optimal, mais le trie par temps de cuisson décroissant fonctionne.
+\item Un troisième défi (poulet, gâteau, poisson) dont la solution optimale n'est ni un tri croissant des temps de préparation, ni un tri décroissant des temps de cuisson.
+\item Un quatrième défi (9 plats) permettant de tester l'algorithme de Johnson.
+\end{enumerate}
+
+
+
+
+
+\end{document}
