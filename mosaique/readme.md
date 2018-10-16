@@ -2,7 +2,7 @@ Ce répertoire contient du code python pour générer des pdfs qui
 correspondent à des exercices de décodage.
 Un grande image est découpée en tuiles qui sont codées en run-length.
 La convention consiste à commencer par mentionner le nombre de blanc, suivi du nombre de noirs, etc... pour chaque ligne.
-Une fiche d'explications est fournie dans le [répertoire](../codages-run-lengths).
+Une fiche d'explications est fournie dans le répertoire [codages-run-length](../codages-run-length).
 
 Cette activité a été testée à la Fête de la Science 2018.
 
