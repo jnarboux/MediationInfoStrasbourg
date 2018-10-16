@@ -5,8 +5,11 @@ La convention consiste à commencer par mentionner le nombre de blanc, suivi du 
 Une fiche d'explications est fournie dans le [répertoire](../codages-run-lengths).
 
 Cette activité a été testée à la Fête de la Science 2018.
-Le fichier mosaique.py contient les sources python.
-Les pdfs contiennent les codes et les solutions.
-Le fichier quadrillage.pdf fournit des quadrillages en plus en cas d'erreur.
+
+Le fichier [mosaique.py](mosaique.py) contient les sources python.
+Les pdfs contiennent les [codes](ours-aime-science_codes.pdf) et les [solutions](ours-aime-science_solutions.pdf) pour l'exemple suivant:
+![Ours](ours.png "Ours")
+
+Le fichier [quadrillage.pdf](quadrillage.pdf) fournit des quadrillages vierges en plus en cas d'erreur.
 
 ![Le résultat en photo](IMG_3030.jpg "Le résultat")
