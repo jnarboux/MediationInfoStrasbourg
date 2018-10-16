@@ -9,5 +9,6 @@ Ces ressources ont été utilisées pour:
 - Formation Enseignants du secondaire, Maison pour la science 2018
 - Intervention Lycée Kleber en 2018
 - Maths C2+ 2018
+- Cours M2 MEEF
 
 
