@@ -61,8 +61,13 @@ def rle_encode_tile(basename, i, j, tile_size):
     return(codes)
 
 def create_tiles(basename,tile_size):
-    imgorig = Image.open(basename+".png")
-    imgorig.convert("1")
+    imgorig = Image.open(basename+".png").convert('RGBA')
+    background = Image.new("RGBA", imgorig.size, (255, 255, 255)) # white background 
+    alpha_composite = Image.alpha_composite(background, imgorig) # blend alpha channel
+    imgorig = alpha_composite.convert("L") # to monochrome
+    threshold = 240
+    imgorig = imgorig.point(lambda p: p > threshold and 255) # O or 255 with threshold
+    #imgorig.save(basename + "_bw.png")
     imgwidth, imgheight = imgorig.size
     for i in range(imgheight//tile_size):
         for j in range(imgwidth//tile_size):

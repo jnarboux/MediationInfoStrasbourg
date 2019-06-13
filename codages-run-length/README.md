@@ -1,1 +1,1 @@
-Quelques fiches pour des activités de codage/décode d'images par Cédric Bastoul.
+Quelques fiches pour des activités de codage/décodage d'images par codage run-length par Cédric Bastoul.
