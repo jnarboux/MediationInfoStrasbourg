@@ -167,4 +167,4 @@ def create_all(basename,tile_size):
     print("Creating solution")
     create_solutions(basename,tile_size)
 
-create_all("ours",15)
+create_all("ours-aime-science",15)
