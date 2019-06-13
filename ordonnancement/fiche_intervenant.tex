@@ -11,6 +11,7 @@
 
 %% Useful packages
 \usepackage{amsmath}
+\usepackage{pdfpages}
 \usepackage{graphicx}
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage[colorlinks=true, allcolors=blue, breaklinks=true]{hyperref}
@@ -19,6 +20,7 @@
 
 \title{Le planning de ma cuisine}
 \author{Adrien Krähenbühl \and Basile Sauvage \and Julien Narboux}
+\date{2018}
 
 \begin{document}
 \maketitle
@@ -27,10 +29,9 @@
 Description d'une activité d'informatique débranchée sur le thème de l'ordonnancement.
 \end{abstract}
 
+\smallskip
 
-\section{Notions abordées}
-
-Algorithme, Ordonnancement, Complexité, 
+\textbf{Mots clés:} algorithme, ordonnancement, complexité, Johnson, débranché, cs-unplugged
 
 \section{Description du jeu}
 
@@ -50,18 +51,29 @@ Le montage que nous avons réalisé consiste en une baguette de 67mm de large, t
 
 Le meilleur temps possible pour chaque défi est indiqué par une marque sur une règle donnant l'échelle de temps.
 
+Toutes les sources sont disponibles ici:
+\url{https://github.com/jnarboux/MediationInfoStrasbourg/tree/master/ordonnancement}
+
+Les commentaires et suggestions d'améliorations sont les bienvenus.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{photo_materiel.jpg}
+\end{center}
+\caption{Le matériel.}
+\end{figure}
 
 \section{Déroulement de l'activité}
 
 Nous proposons quatre défis et quelques questions et explications:
 \begin{enumerate}
-\item On explique les règles du jeu en choisissant un ordre pas optimal sur un exemple.
-\item Un premier défi (croissant, brioche, pain). Si on trie les plats par ordre de temps de préparation croissant, on obtient une solution optimale.
-\item Un deuxième défi (tarte flambée, jambonneau, bretzel) montre que trier par temps de préparation croissant n'est pas toujours optimal, mais si on trie par temps de cuisson décroissant cela fonctionne sur cet exemple.
+\item On explique les règles du jeu sur un exemple en choisissant un ordonnacement pas optimal.
+\item Un premier défi (le boulanger: croissant, brioche, pain). Si on trie les plats par ordre de temps de préparation croissant, on obtient une solution optimale.
+\item Un deuxième défi (le restau alsacien: tarte flambée, jambonneau, bretzel) montre que trier par temps de préparation croissant n'est pas toujours optimal, mais si on trie par temps de cuisson décroissant cela fonctionne sur cet exemple.
 \item Un troisième défi (poulet, gâteau, poisson) dont la solution optimale n'est ni un tri croissant des temps de préparation, ni un tri décroissant des temps de cuisson.
 {\huge Il faut qu'on change les chiffres c'est pas le cas actuellement !}
-\item Un quatrième défi (avec les 9 plats) permet de faire chercher un peu plus les participants.
-\item On peut alors demander combien il y a d'ordonnancement des six plats possibles.
+\item Un quatrième défi (avec les 9 plats) permet de faire chercher un peu plus les participants, il devient difficile de savoir si l'on a obtenu la solution optimale.
+\item On peut alors demander combien il y a d'ordonnancements des six plats possibles.
 \item On explique l'algorithme de Johnson et on commence à l'éxecuter sur l'exemple.
 \item On peut éventuellement poser la question de la complexité de l'algorithme.
 \item A la fin on peut ouvrir en expliquant ce qu'est un algorithme, citer quelques applications et parler de problèmes NP-Complets 
@@ -69,14 +81,17 @@ Nous proposons quatre défis et quelques questions et explications:
 
 \section{Contexte scientifique}
 
-TODO
+Le problème devient NP-Dur si on ajoute une troisième machine.
+\cite{baker2013principles} \cite{johnson1954optimal}
 
 \section{Retour d'expériences}
 
-Cette activité a été testée avec le public d'un Village des Science. Le public a été assez attiré par l'installation. Les gens n'ont pas eu de mal à comprendre les règles. Les enfants à partir de 7-8 arrivent à résoudre les défis.
+Cette activité a été testée avec le public d'un Village des Sciences en 2018. Le public a été assez attiré par l'installation. Les gens n'ont pas eu de mal à comprendre les règles. Les enfants à partir de 7-8 ans parviennent à résoudre les défis.
 
-\begin{figure}
-\includegraphics[width=0.5\textwidth]{IMG_2989.png}
+\begin{figure}[h!]
+\includegraphics[width=0.5\textwidth]{photo_activite.jpg}
+\includegraphics[width=0.5\textwidth]{photo_activite2.jpg}
+
 \caption{Fête de la Science 2018, Strasbourg}
 \end{figure}
 
@@ -84,6 +99,16 @@ Cette activité a été testée avec le public d'un Village des Science. Le publ
 
 On pourrait envisager d'ajouter à cette activité une deuxième étape avec des graphes de dépendances entre tâches.
 
-\section{Bibliographie}
+
+
+\bibliographystyle{alpha}
+\bibliography{biblio}
+
+
+\clearpage
+
+\includepdf{modeles.pdf} 
+\includepdf[landscape=true,pages=1-2]{explications.pdf}
+
 
 \end{document}
