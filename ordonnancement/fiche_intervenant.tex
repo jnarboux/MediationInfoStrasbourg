@@ -68,11 +68,12 @@ Les commentaires et suggestions d'améliorations sont les bienvenus.
 Nous proposons quatre défis et quelques questions et explications:
 \begin{enumerate}
 \item On explique les règles du jeu sur un exemple en choisissant un ordonnacement pas optimal.
-\item Un premier défi (le boulanger: croissant, brioche, pain). Si on trie les plats par ordre de temps de préparation croissant, on obtient une solution optimale.
+\item Un premier défi (le boulanger: croissant, brioche, pain). On laisse le joueur essayer, une solution est vite trouvée. On peut alors demander ``Quelle méthode avez-vous utilisé ?'', `'Est-ce que c'est la meilleure solution?''
+Sur cet exemple, si on trie les plats par ordre de temps de préparation croissant, on obtient une solution optimale. 
 \item Un deuxième défi (le restau alsacien: tarte flambée, jambonneau, bretzel) montre que trier par temps de préparation croissant n'est pas toujours optimal, mais si on trie par temps de cuisson décroissant cela fonctionne sur cet exemple.
 \item Un troisième défi (poulet, gâteau, poisson) dont la solution optimale n'est ni un tri croissant des temps de préparation, ni un tri décroissant des temps de cuisson.
 \item Un quatrième défi (avec les 9 plats) permet de faire chercher un peu plus les participants, il devient difficile de savoir si l'on a obtenu la solution optimale.
-\item On peut alors demander combien il y a d'ordonnancements des six plats possibles.
+\item On peut alors demander combien il y a d'ordonnancements des 9 plats possibles.
 \item On explique l'algorithme de Johnson et on commence à l'éxecuter sur l'exemple.
 \item On peut éventuellement poser la question de la complexité de l'algorithme.
 \item A la fin on peut ouvrir en expliquant ce qu'est un algorithme, citer quelques applications et parler de problèmes NP-Complets 
@@ -80,15 +81,32 @@ Nous proposons quatre défis et quelques questions et explications:
 
 \section{Contexte scientifique}
 
-Le problème devient NP-Dur si on ajoute une troisième machine.
-\cite{baker2013principles} \cite{johnson1954optimal}
+TODO
+Le problème présenté dans cette activité est connu comme le problème de Johnson, c'est un des premiers problèmes d'ordonnancement étudié. Johnson a proposé une solution quand plats nécessitent deux tâches~/cite{johnson1954optimal}.
+
+\subsection{Permutations ?}
+
+On peut se poser la question de savoir si on peut toujours trouver une solution optimale en mettant les tâches dans le même ordre dans le four que l'ordre de la préparation.
+
+Généralisons pour des plats qui nécessitent pas deux mais quatre étapes:\\
+\begin{tabular}{lll}
+          &   & \\
+laver  & 1 & 4 \\  
+éplucheur    & 4 & 1 \\
+mixeur & 4 & 1 \\
+cuisson      & 1 & 4 \\
+\end{tabular}
+
+\subsection{}
+
+Le problème devient NP-Dur si on ajoute une troisième machine\cite{baker2013principles}.
 
 \section{Retour d'expérience}
 
 Cette activité a été testée avec le public d'un Village des Sciences en 2018. Le public a été assez attiré par l'installation. Les gens n'ont pas eu de mal à comprendre les règles. Les enfants à partir de 7-8 ans parviennent à résoudre les défis. Certain.e comparait l'activité au planning des lessives du week-end: couleur/blanc/laine. 
 
 \begin{figure}[h!]
-\includegraphics[width=\textwidth]{photo_activite.jpg}
+\includegraphics[width=\textwidth]{photo_activite.jpg}\\
 \includegraphics[width=\textwidth]{photo_activite2.jpg}
 
 \caption{Fête de la Science 2018, Strasbourg}
