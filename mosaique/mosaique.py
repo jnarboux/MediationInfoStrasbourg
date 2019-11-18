@@ -61,8 +61,13 @@ def rle_encode_tile(basename, i, j, tile_size):
     return(codes)
 
 def create_tiles(basename,tile_size):
-    imgorig = Image.open(basename+".png")
-    imgorig.convert("1")
+    imgorig = Image.open(basename+".png").convert('RGBA')
+    background = Image.new("RGBA", imgorig.size, (255, 255, 255)) # white background 
+    alpha_composite = Image.alpha_composite(background, imgorig) # blend alpha channel
+    imgorig = alpha_composite.convert("L") # to monochrome
+    threshold = 240
+    imgorig = imgorig.point(lambda p: p > threshold and 255) # O or 255 with threshold
+    #imgorig.save(basename + "_bw.png")
     imgwidth, imgheight = imgorig.size
     for i in range(imgheight//tile_size):
         for j in range(imgwidth//tile_size):
@@ -72,21 +77,36 @@ def create_tiles(basename,tile_size):
 
 def latex_code(image_filename,i,j,rlecode,tile_size):
     source_template=r"""
-Tuile Ligne: xxx Colonne: yyy.
+\parbox{\textwidth}{
+Ecrire au dos du quadrillage: Ligne: xxx, Colonne: yyy.\\
+\smallskip
 
-Code:
+\begin{tabular}{cl}
+\begin{tikzpicture}
+\draw (0,0) grid[step=0.5] (7.5,7.5);
+\end{tikzpicture}
+\begin{minipage}[b]{.46\linewidth}
+\baselineskip=0.5cm
 zzz
+\end{minipage}
+\end{tabular}
+}
+\vfill
 
-\newpage
+%\newpage
 
-\fbox{\includegraphics[width=\textwidth]{nomimage}}
+%\fbox{\includegraphics[width=\textwidth]{nomimage}}
 
-\newpage
+%\newpage
     """
     s1=source_template.replace("xxx", str(i)).replace("yyy", str(j))
     s2=s1.replace("zzz", str(rlecode)).replace("nomimage", name_of_tile(image_filename,i,j)+".png" )
     return(s2)
-    
+
+
+def presentation_of_code(ll):
+    return("\\\\".join(map (lambda l:",".join(map(str,l)),ll)))
+
 def create_exercises(basename,tile_size):
     imgorig = Image.open(basename+".png")
     width, height = imgorig.size
@@ -109,7 +129,7 @@ def create_exercises(basename,tile_size):
         for j in range(1,nby+1):
             print("Tile",i,j)
             code=rle_encode_tile(basename,i,j,tile_size)
-            print (latex_code(basename,i,j,str(code),tile_size),file=f)
+            print (latex_code(basename,i,j,presentation_of_code(code),tile_size),file=f)
     print(footer,file=f)
     f.close()
 
@@ -152,4 +172,4 @@ def create_all(basename,tile_size):
     print("Creating solution")
     create_solutions(basename,tile_size)
 
-create_all("ours",15)
+create_all("ours-aime-science",15)
