@@ -14,4 +14,5 @@ Ces ressources ont été utilisées pour:
 - Cours prof des écoles MEEF 2018 et 2019
 - Formation Laboratoire de Maths de Saverne
 - Interventions dans 10 collèges dans le cadre de la Cordée de la réussite "Les décodeuses d'informatique", 2021.
+- Option Partenaire Scientifique pour la Classe, L3 Info, 2021. 
 
