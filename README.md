@@ -13,5 +13,5 @@ Ces ressources ont été utilisées pour:
 - Cours M2 MEEF
 - Cours prof des écoles MEEF 2018 et 2019
 - Formation Laboratoire de Maths de Saverne
-- Intervention Cordée de la réussite "Les décodeuses d'informatique"
+- Interventions dans 10 collèges dans le cadre de la Cordée de la réussite "Les décodeuses d'informatique", 2021.
 
