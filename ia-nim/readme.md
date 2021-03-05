@@ -1,6 +1,4 @@
 IA pour le jeu de Nim.
 
 Design du support à gobelets par Alain FROEHLICHER (Le Vaisseau).
-L'activité est décrite par Marie Duflot Kremer:
-https://members.loria.fr/MDuflot/files/med/IAnim.html
-
+Voir page de l'activité sur le [wiki](https://github.com/jnarboux/MediationInfoStrasbourg/wiki/IA-Apprentissage:-Nim)
