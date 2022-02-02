@@ -31,13 +31,13 @@ Description d'une activité d'informatique débranchée sur le thème de l'ordon
 
 \smallskip
 
-\textbf{Mots clés:} algorithme, ordonnancement, complexité, Johnson, débranché, cs-unplugged
+\textbf{Mots clés:} algorithme, ordonnancement, complexité, Johnson, informatique débranchée, cs-unplugged
 
 \section{Description du jeu}
 
-On se trouve dans une cuisine avec un ensemble de plats à préparer qui nécessitent chacun un certain temps de préparation et un certain temps de cuisson. Un seul plat peut être préparé à la fois, de même que le four ne peut accueillir qu'un plat à la fois.
+On se trouve dans une cuisine avec un ensemble de plats à préparer qui nécessitent chacun un certain temps de préparation et un certain temps de cuisson. Le cuisinier ou la cuisinière ne peut préparer qu'un seul plat à la fois, et le four ne peut accueillir qu'un plat à la fois.
 
-L'objectif est de trouver l'ordre de préparation des plats qui permet de terminer l'ensemble des plats le plus rapidement possible.
+L'objectif est de trouver l'ordre de préparation des plats qui permet de terminer l'ensemble de tous les plats le plus rapidement possible.
 
 \section{Matériel}
 
@@ -68,7 +68,7 @@ Les commentaires et suggestions d'améliorations sont les bienvenus.
 Nous proposons quatre défis et quelques questions et explications:
 \begin{enumerate}
 \item On explique les règles du jeu sur un exemple en choisissant un ordonnacement pas optimal.
-\item Un premier défi (le boulanger: croissant, brioche, pain). On laisse le joueur essayer, une solution est vite trouvée. On peut alors demander ``Quelle méthode avez-vous utilisé ?'', `'Est-ce que c'est la meilleure solution?''
+\item Un premier défi (le boulanger: croissant, brioche, pain). On laisse le joueur essayer, une solution est vite trouvée. On peut alors demander ``Quelle méthode avez-vous utilisée ?'', `'Est-ce que c'est la meilleure solution?''
 Sur cet exemple, si on trie les plats par ordre de temps de préparation croissant, on obtient une solution optimale. 
 \item Un deuxième défi (le restau alsacien: tarte flambée, jambonneau, bretzel) montre que trier par temps de préparation croissant n'est pas toujours optimal, mais si on trie par temps de cuisson décroissant cela fonctionne sur cet exemple.
 \item Un troisième défi (poulet, gâteau, poisson) dont la solution optimale n'est ni un tri croissant des temps de préparation, ni un tri décroissant des temps de cuisson.
@@ -81,29 +81,46 @@ Sur cet exemple, si on trie les plats par ordre de temps de préparation croissa
 
 \section{Contexte scientifique}
 
-TODO
-Le problème présenté dans cette activité est connu comme le problème de Johnson, c'est un des premiers problèmes d'ordonnancement étudié. Johnson a proposé une solution quand plats nécessitent deux tâches~/cite{johnson1954optimal}.
 
-\subsection{Permutations ?}
+Le problème présenté dans cette activité est un exemple des problèmes étudiés en recherche opérationnelle. Il s'agit de l'étude des méthodes rationnelles pour réaliser une tâche de manière optimale. En particulier la recherche opérationnelle étudie les problèmes dit combinatoires, où il faut choisir parmi un grand nombre de solutions (ordonnancement, gestion de stocks, affectation de ressources, \ldots ).
 
-On peut se poser la question de savoir si on peut toujours trouver une solution optimale en mettant les tâches dans le même ordre dans le four que l'ordre de la préparation.
+Le problème présenté ici est connu comme le problème de Johnson, c'est un des premiers problèmes d'ordonnancement étudié. Johnson a proposé une solution quand les plats nécessitent deux tâches~\cite{johnson1954optimal}.
 
-Généralisons pour des plats qui nécessitent pas deux mais quatre étapes:\\
-\begin{tabular}{lll}
-          &   & \\
-laver  & 1 & 4 \\  
-éplucheur    & 4 & 1 \\
-mixeur & 4 & 1 \\
-cuisson      & 1 & 4 \\
-\end{tabular}
+On peut l'exprimer de la manière suivante:
+\begin{enumerate}
+\item Sélectionner la tâche la plus courte.
+\item Si c'est un temps de préparation, placer ce plat au début du planning. Sinon, c'est un temps de cuisson, placer ce plat en fin de planning.
+\item Continuer avec le reste des plats de la même manière en remplissant le planning par le centre.
+\end{enumerate}
 
-\subsection{}
+ou bien de la manière suivante:
+\begin{enumerate}
+\item Séparer les plats en deux catégories: ceux qui sont plus rapides à préparer qu'à cuire (R), et les autres (C).
+\item Ordonnancer les plats rapides (R) par temps de préparation croissant, puis les autres par temps de cuisson décroissant. 
+\end{enumerate}
 
-Le problème devient NP-Dur si on ajoute une troisième machine\cite{baker2013principles}.
+%\subsection{Permutations ?}
+%
+%On peut se poser la question de savoir si on peut toujours trouver une solution optimale en mettant les tâches dans le même ordre dans le four que l'ordre de la préparation.
+%
+%Généralisons pour des plats qui nécessitent pas deux mais quatre étapes:\\
+%\begin{tabular}{lll}
+%          &   & \\
+%laver  & 1 & 4 \\  
+%éplucheur    & 4 & 1 \\
+%mixeur & 4 & 1 \\
+%cuisson      & 1 & 4 \\
+%\end{tabular}
+
+%\subsection{Extensions}
+
+Le problème devient NP-Difficie si on ajoute une troisième machine~\cite{baker2013principles}. En pratique, les problèmes d'ordonnancement sont difficiles, des instances du problèmes avec 15 plats utilisant 15 machines ne sont pas résolues\footnote{Voir \url{https://educnet.enpc.fr/file.php/297/CoursROPonts.pdf}, page 106.}.
+
+
 
 \section{Retour d'expérience}
 
-Cette activité a été testée avec le public d'un Village des Sciences en 2018. Le public a été assez attiré par l'installation. Les gens n'ont pas eu de mal à comprendre les règles. Les enfants à partir de 7-8 ans parviennent à résoudre les défis. Certain.e comparait l'activité au planning des lessives du week-end: couleur/blanc/laine. 
+Cette activité a été testée avec le public d'un Village des Sciences en 2018. Le public a été assez attiré par l'installation. Les gens n'ont pas eu de mal à comprendre les règles. Les enfants à partir de 7-8 ans parviennent à résoudre les défis. Certains comparaient l'activité au planning des lessives du week-end: couleur/blanc/laine avec lavage et séchage dans deux machines différentes. 
 
 \begin{figure}[h!]
 \includegraphics[width=\textwidth]{photo_activite.jpg}\\
