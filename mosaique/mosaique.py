@@ -1,6 +1,6 @@
 from PIL import Image
 from math import *
-import image_slicer
+# import image_slicer
 import itertools
 from itertools import zip_longest
 import numpy
@@ -83,10 +83,10 @@ Ecrire au dos du quadrillage: Ligne: xxx, Colonne: yyy.\\
 
 \begin{tabular}{cl}
 \begin{tikzpicture}
-\draw (0,0) grid[step=0.5] (7.5,7.5);
+\draw (0,0) grid[step=1] (8,8);
 \end{tikzpicture}
 \begin{minipage}[b]{.46\linewidth}
-\baselineskip=0.5cm
+\baselineskip=1cm
 zzz
 \end{minipage}
 \end{tabular}
@@ -172,4 +172,4 @@ def create_all(basename,tile_size):
     print("Creating solution")
     create_solutions(basename,tile_size)
 
-create_all("ours-aime-science",15)
+create_all("panda-aime-science",8)
