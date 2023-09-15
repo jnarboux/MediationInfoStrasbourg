@@ -16,4 +16,5 @@ Ces ressources ont été utilisées pour:
 - Interventions dans collèges et lycées dans le cadre de la Cordée de la réussite "Les décodeuses d'informatique", 2021-2024.
 - Option Partenaire Scientifique pour la Classe, L3 Info, 2021-2024.
 - Exposition permanente La Fabrik au Vaisseau
+- Projet Enigma, Centre Culturel de Rencontres (CCR) les Dominicains à Guebwiller, 2023
 
